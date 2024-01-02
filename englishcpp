@@ -1,0 +1,166 @@
+#include <iostream>
+#include <stdio.h>
+#include <stdlib.h>
+
+
+int printRandoms(int lower, int upper,
+                            int count)
+{
+    int i;
+    for (i = 0; i < count; i++) {
+        int num = (rand() %
+        (upper - lower + 1)) + lower;
+        //printf("%d ", num);
+        return num;
+    }
+}
+
+void matrixDisplay(int series[4][4]){
+    int i;
+    int j;
+    for(i = 0; i < 4; i++){
+        for(j = 0; j < 4; j++){
+            printf("%d\t", series[i][j]);
+        }
+        printf("\n");
+    }
+}
+
+void matrixAssign(int series[4][4]){
+    int i;
+    int j;
+    for(i = 0; i < 4; i++){
+        for(j = 0; j < 4; j++){
+            series[i][j] = printRandoms(-5,5,4);
+        }
+
+    }
+}
+
+void matrixAdd(int seriesA[4][4], int seriesB[4][4]){
+    int matrixAddition[4][4];
+
+
+    int i;
+    int j;
+
+    for(i = 0; i < 4; i++){
+        for(j = 0; j < 4; j++){
+            matrixAddition[i][j] = seriesA[i][j] + seriesB[i][j];
+        }
+    }
+
+    matrixDisplay(matrixAddition);
+}
+
+
+void matrixSubtract(int seriesA[4][4], int seriesB[4][4]){
+    int matrixSubtraction[4][4];
+
+
+    int i;
+    int j;
+
+    for(i = 0; i < 4; i++){
+        for(j = 0; j < 4; j++){
+            matrixSubtraction[i][j] = seriesA[i][j] - seriesB[i][j];
+        }
+    }
+
+    matrixDisplay(matrixSubtraction);
+}
+
+void matrixMultiply(int seriesA[4][4], int seriesB[4][4]){
+    int matrixMultiplication[4][4];
+
+
+    int i;
+    int j;
+
+    for(i = 0; i < 4; i++){
+        for(j = 0; j < 4; j++){
+            matrixMultiplication[i][j] = seriesA[i][j];seriesB[j][i];
+        }
+    }
+
+    matrixDisplay(matrixMultiplication);
+}
+
+void matrixTranspose(int seriesA[4][4]){
+
+    int transpose[4][4];
+
+
+
+    int i;
+    int j;
+
+    for(i = 0; i < 4; i++){
+        for(j = 0; j < 4; j++){
+        transpose[i][j] = seriesA[j][i];
+        }
+    }
+
+    matrixDisplay(transpose);
+}
+void matrixTransposeB(int seriesB[4][4]){
+    int transposeB[4][4];
+
+
+    int i;
+    int j;
+
+    for(i = 0; i < 4; i++){
+        for(j = 0; j < 4; j++){
+
+            transposeB[i][j] = seriesB[j][i];
+        }
+    }
+
+    matrixDisplay(transposeB);
+}
+
+
+
+int main(int argc, char *argv[]) {
+
+    int matrixA[4][4];
+    int matrixB[4][4];
+
+    //srand(time(0));
+
+    matrixAssign(matrixA);
+    matrixAssign(matrixB);
+
+
+    printf("Matrix A \n");
+    matrixDisplay(matrixA);
+    printf("\n\n\n");
+
+    printf("Matrix B \n");
+    matrixDisplay(matrixB);
+    printf("\n\n\n");
+
+    printf("Addition of Matrices(A+B):\n");
+    matrixAdd(matrixA, matrixB);
+
+    printf("\n\n\n");
+    printf("Subtraction of Matrices(A-B):\n");
+    matrixSubtract(matrixA, matrixB);
+
+    printf("\n\n\n");
+    printf("Multiplication of Matrices(A*B):\n");
+    matrixMultiply(matrixA, matrixB);
+
+    printf("\n\n\n");
+    printf("Transpose of Matrix A:\n");
+    matrixTranspose(matrixA);
+
+    printf("\n\n\n");
+    printf("Transpose of Matrix B:\n");
+    matrixTransposeB(matrixB);
+
+
+
+    return 0;
+}
