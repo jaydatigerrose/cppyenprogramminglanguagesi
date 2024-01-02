@@ -1,0 +1,90 @@
+#include <iostream>
+#include <stdlib.h>
+#include <stdio.h>
+
+using namespace std;
+
+// This function generates a 4*4 matrix
+void generateMatrix(int matrix[4][4]) {
+    for (int x = 0; x < 4; ++x)
+        for (int y = 0; y < 4; ++y)
+            matrix[x][y] = rand() % 11 - 5; // Generates random numbers between -5 and 5
+}
+
+// This function to displays a 4x4 matrix
+void displayMatrix(const int matrix[4][4]) {
+    for (int x = 0; x < 4; ++x) {
+        for (int y = 0; y < 4; ++y)
+            cout << matrix[x][y] << "\t";
+        cout << endl;
+    }
+    cout << endl;
+}
+
+// Function to add two matrices (A + B)
+void addMatrices(const int A[4][4], const int B[4][4], int answer[4][4]) {
+    for (int x = 0; x < 4; ++x)
+        for (int y = 0; y < 4; ++y)
+            answer[x][y] = A[x][y] + B[x][y];
+}
+
+// Function to subtract two matrices (A - B)
+void subtractMatrices(const int A[4][4], const int B[4][4], int answer[4][4]) {
+    for (int x = 0; x < 4; ++x)
+        for (int y = 0; y < 4; ++y)
+            answer[x][y] = A[x][y] - B[x][y];
+}
+
+// Function to multiply two matrices (A * B)
+void multiplyMatrices(const int A[4][4], const int B[4][4], int answer[4][4]) {
+    for (int x = 0; x < 4; ++x)
+        for (int y = 0; y < 4; ++y) {
+            answer[x][y] = 0;
+            for (int k = 0; k < 4; ++k)
+                answer[x][y] += A[x][k] * B[y][k];
+        }
+}
+
+// Function to transpose a matrix
+void transposeMatrix(const int matrix[4][4], int answer[4][4]) {
+    for (int x = 0; x < 4; ++x)
+        for (int y = 0; y < 4; ++y)
+            answer[y][x] = matrix[x][y];
+}
+
+int main() {
+    srand(time(0)); // Seed for random number generation
+
+    int matrixA[4][4], matrixB[4][4];
+    int answerMatrix[4][4];
+
+    // Generate random matrices
+    generateMatrix(matrixA);
+    generateMatrix(matrixB);
+
+    // Display matrices A and B
+    cout << "Matrix A:" << endl;
+    displayMatrix(matrixA);
+    cout << "Matrix B:" << endl;
+    displayMatrix(matrixB);
+
+    // Perform matrix operations
+    addMatrices(matrixA, matrixB, answerMatrix);
+    cout << "The addition of the matrices (A + B):" << endl;
+    displayMatrix(answerMatrix);
+
+    subtractMatrices(matrixA, matrixB, answerMatrix);
+    cout << "The subtraction of the matrices (A - B):" << endl;
+    displayMatrix(answerMatrix);
+
+    multiplyMatrices(matrixA, matrixB, answerMatrix);
+    cout << "The multiplication of the matrices (A * B):" << endl;
+    displayMatrix(answerMatrix);
+
+    transposeMatrix(matrixA, answerMatrix);
+    cout << "Transpose of Matrix A:" << endl;
+    displayMatrix(answerMatrix);
+
+   
+    return 0;
+}
