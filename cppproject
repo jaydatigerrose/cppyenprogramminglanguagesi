@@ -61,30 +61,52 @@ int main() {
     // Generate random matrices
     generateMatrix(matrixA);
     generateMatrix(matrixB);
-
+    
+    
     // Display matrices A and B
-    cout << "Matrix A:" << endl;
+    printf("Matrix A: \n");
     displayMatrix(matrixA);
-    cout << "Matrix B:" << endl;
+     printf("\n\n\n");
+     
+    printf("Matrix B: \n");
     displayMatrix(matrixB);
+     printf("\n\n\n");
 
-    // Perform matrix operations
+   // Perform matrix operations
+ 
+    
+
+    printf("The addition of the matrices (A + B): \n");
     addMatrices(matrixA, matrixB, answerMatrix);
-    cout << "The addition of the matrices (A + B):" << endl;
     displayMatrix(answerMatrix);
 
+
+    printf("\n\n\n");
+    printf("The subtraction of the matrices (A - B):\n");
     subtractMatrices(matrixA, matrixB, answerMatrix);
-    cout << "The subtraction of the matrices (A - B):" << endl;
     displayMatrix(answerMatrix);
 
+
+
+    printf("\n\n\n");
+    printf("The multiplication of the matrices (A * B):\n");
     multiplyMatrices(matrixA, matrixB, answerMatrix);
-    cout << "The multiplication of the matrices (A * B):" << endl;
     displayMatrix(answerMatrix);
 
+
+
+    printf("\n\n\n");
+    printf("Transpose of Matrix A: \n");
     transposeMatrix(matrixA, answerMatrix);
-    cout << "Transpose of Matrix A:" << endl;
-    displayMatrix(answerMatrix);
+    displayMatrix(answerMatrix); 
+
+    printf("\n\n\n");
+    printf("Transpose of Matrix B:\n");
+     transposeMatrix(matrixB, answerMatrix);
+    displayMatrix(answerMatrix); 
+
 
    
     return 0;
 }
+
